@@ -1,5 +1,6 @@
 ﻿using ClassMetodDemo.Abstract;
 using ClassMetodDemo.Entities;
+using ClassMetodDemo.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,19 @@ namespace ClassMetodDemo.Concrete
 {
     public class GamerManager : IGamerManager
     {
+        private IValidator _validator;
+        public GamerManager(IValidator validator)
+        {
+            _validator = validator;
+        }
+
         public void Add(Gamer manager)
         {
-            Console.WriteLine("Gamer Added");
+            if (_validator.Validate(manager))
+            {
+                Console.WriteLine("Gamer Added");
+            }
+            
         }
 
         public void Remove(Gamer manager)

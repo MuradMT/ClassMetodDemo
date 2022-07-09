@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ClassMetodDemo.Validation
 {
-    public class Validator
+    public class Validator:IValidator
     {
-        public  static bool Validate(Gamer game)
+        public  bool Validate(Gamer game)
         {
             bool result = true;
             foreach (var gamerItem in GamersInfo.some)
